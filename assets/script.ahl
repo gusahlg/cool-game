@@ -1,0 +1,10 @@
+# Welcome to escape.exe, the game where you escape from reality through programming scripts to lead your followers to freedom from sanity!
+#
+# To beat this game you have to use your programming skills to escort the precious McBertlington of the kingdom of Bertmania!
+# Be careful though for there the resources are scarce and there are goblins and other foul creatures lurking all over the place!
+# 
+# The scripting language uses most of the basic programming language featurese combined with some easy functions for letting your units
+# do basic actions. This is how you make a unit move:
+#   
+# units[0].move(2, up);
+# This code will make the first unit in the units list (which always contains all units) to move 2 steps up!

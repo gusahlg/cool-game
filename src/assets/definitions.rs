@@ -1,12 +1,14 @@
+use macroquad::prelude::*;
+
 // Everything about the level
 pub struct Level {
-    ocean: Texture2D,
-    tundra: Texture2D,
-    mountains: Texture2D,
-    woods: Texture2D,
-    desert: Texture2D,
-    fog: Texture2D,
-    plains: Texture2D,
+    pub ocean: Texture2D,
+    pub tundra: Texture2D,
+    pub mountains: Texture2D,
+    pub woods: Texture2D,
+    pub desert: Texture2D,
+    pub fog: Texture2D,
+    pub plains: Texture2D,
 }
 impl Level {
     pub async fn load() -> Self {
@@ -48,9 +50,9 @@ pub struct Units {
     // I am keeping it minimal so that it is within scope plus I named it fighter to not have same
     // name is civ 6 warrior btw. My fingers are clumsy now lol
 
-    fighter: Texture2D, 
-    archer: Texture2D, 
-    catapult: Texture2D, 
+    pub fighter: Texture2D,
+    pub archer: Texture2D,
+    pub catapult: Texture2D,
 }
 impl Units {
     pub async fn load() -> Self {
@@ -77,9 +79,9 @@ pub struct Buildings {
     // Nothing is cemented when it comes to builings, we got to keep it minimal so we can't have a
     // massive plan for these, they may be entirely aesthetics for now as implementing features
     // will be quite hard.
-    town_hall: Texture2D,
-    farm: Texture2D,
-    village: Texture2D,
+    pub town_hall: Texture2D,
+    pub farm: Texture2D,
+    pub village: Texture2D,
 }
 impl Buildings {
     pub async fn load() -> Self {

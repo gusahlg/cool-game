@@ -1,8 +1,11 @@
 /// some cool rendering and shit
-use macroquad::prelude::*;
-pub fn gameloop() {
-    
-    draw_text("Welcome to a cool game my dud", 20.0, 40.0, 30.0, YELLOW);
-    draw_rectangle(10.0, 10.0, 30.0, 30.0, RED);
-}
+use crate::assets::Assets;
+use crate::world::levels::Level;
 
+pub fn gameloop(assets: &Assets, level: &Level) {
+    for (y, row) in level.0.iter().enumerate() {
+        for (x, tile) in row.iter().enumerate() {
+            tile.draw(x as u8, y as u8, assets);
+        }
+    }
+}
