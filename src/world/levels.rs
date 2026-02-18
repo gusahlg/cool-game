@@ -15,8 +15,8 @@ pub struct Tile {
 
     // IMPORTANT NOTE:
     // Unit and Building structs are defined in a seperate directory under src called units.
-
     pub unit: Option<Unit>,
+
     //pub building: Option<Building>,
 
     // The type of the terrain, specified by the enum
@@ -95,7 +95,7 @@ impl Tile {
                     draw_texture(&assets.units.catapult, px, py, WHITE);
                 },
             },
-            None => { /* no unit on this tile */ }
+            None => {  }
         }
     }
 }
