@@ -1,0 +1,26 @@
+// turn.ahl — called once at level load to define functions.
+// The engine calls on_turn() each turn.
+
+fn on_turn() {
+    let units = get_units();
+    let count = len(units);
+
+    if count == 0 {
+        print("No units on the field.");
+        return;
+    }
+
+    print("=== Turn Start ===");
+    print("Units: " + str(count));
+
+    for i in 0..count {
+        let u = units[i];
+        let x = u[0];
+        let y = u[1];
+        let hp = u[2];
+        let kind = u[3];
+        print("  " + kind + " at (" + str(x) + "," + str(y) + ") hp=" + str(hp));
+    }
+
+    print("=== Turn End ===");
+}

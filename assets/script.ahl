@@ -1,26 +1,139 @@
-// Welcome to escape.exe, the game where you escape from reality through programming scripts to lead your followers to freedom from sanity!
+// ============================================================
+//   WELCOME TO ESCAPE.EXE
+// ============================================================
 //
-// To beat this game you have to use your programming skills to escort the precious McBertlington of the kingdom of Bertmania!
-// Be careful though for there the resources are scarce and there are goblins and other foul creatures lurking all over the place!
-// 
-// The scripting language uses most of the basic programming language featurese combined with some easy functions for letting your units
-// do basic actions. This is how you make a unit move:
-//   
-// units[0].move(2, up);
-// This code will make the first unit in the units list (which always contains all units) to move 2 steps up!
+// WELCOME to this beautiful game !!! You are in the strange
+// land of Bertmania, ruled by king McBertlington. He needs your
+// precise instructions to escape from this strange place!
 //
-// Here's some basic starting code that stores all the units in the level currently within a list called units. It does this by utilizing some built in function that the game's api provides, in this case: get_units()
+// HOW TO PLAY:
+//   1. Write your code in the editor
+//   2. Click [ RUN ] to execute it
+//   3. Every time you click RUN, the game calls your on_turn()
+//      function this is how you implement the scripting logic.
+//   4. Move the King to the RIGHT, TOP, or BOTTOM edge of the
+//      map to win!
 //
+// BE CAREFUL:
+//   - If your script has an error, you get a "blunder"
+//   - 3 blunders and it's game over!
+//   - Your code is saved automatically as you type, meaning
+//     that if you quit the game and then come back your script
+//     will stay.
+//
+// SCROLLING THE MAP:
+//   - Mouse wheel to scroll vertically
+//   - Ctrl + mouse wheel to scroll horizontally
+//
+// ============================================================
+//   YOUR UNITS
+// ============================================================
+//
+// You start with 3 units in the bottom-left corner:
+//
+//   King     - McBertlington the legend himself.
+//              HP: 6, DMG: 8
+//
+//   Fighter  - Tough melee unit.
+//              HP: 7, DMG: 4
+//
+//   Archer   - Ranged attacker.
+//              HP: 5, DMG: 3
+//
+// ============================================================
+//   GAME API — FUNCTIONS YOU CAN USE TO MANIPULATE IN-GAME STUFF
+// ============================================================
+//
+// get_units()
+//   Returns a list of all your units on the map.
+//   Each unit is a list: [x, y, hp, kind]
+//     x     - column position (0 = left edge)
+//     y     - row position (0 = top edge)
+//     hp    - current health points
+//     kind  - "archer", "fighter", "catapult", or "King"
+//
+//   Example:
+//     let units = get_units();
+//     let first = units[0];
+//     let x = first[0];
+//     let y = first[1];
+//     print("Unit at " + str(x) + ", " + str(y));
+//
+// ----
+//
+// unit_count()
+//   Returns the number of units currently on the map.
+//
+//   Example:
+//     let n = unit_count();
+//     print("I have " + str(n) + " units");
+//
+// ----
+//
+// move_unit(index, direction)
+//   Moves the unit at the given index one tile in a direction.
+//   index     - which unit to move (0, 1, 2, ...)
+//   direction - one of these strings:
+//       "up"         "down"
+//       "left"       "right"
+//       "up_left"    "up_right"
+//       "down_left"  "down_right"
+//
+//   Example:
+//     move_unit(0, "right");   // move first unit right
+//     move_unit(1, "up");      // move second unit up
+//
+// ----
+//
+// spawn_unit(kind, x, y)
+//   Creates a new unit at position (x, y).
+//   kind — "archer", "fighter", or "catapult"
+//
+//   Example:
+//     spawn_unit("archer", 4, 70);
+//
+// ----
+//
+// get_terrain(x, y) 
+//   Returns the terrain type at position (x, y) as a string.
+//   Possible values: "plains", "woods", "mountain",
+//                    "desert", "tundra", "void", "fog"
+//
+//   Example:
+//     let t = get_terrain(10, 10);
+//     if t == "mountain" {
+//         print("That tile is a mountain!");
+//     }
+//
+// ============================================================
+//   LANGUAGE BASICS (quick reference)
+// ============================================================
+//
+// Variables:     let x = 5;
+// Strings:       let name = "hello";
+// Math:          + - * / %
+// Comparison:    == != < > <= >=
+// Logic:         && || !
+// If/else:       if x > 3 { } else { }
+// Loops:         for i in 0..10 { }
+//                while x > 0 { }
+// Functions:     fn my_func(a, b) { return a + b; }
+// Print:         print("message");
+// Convert:       str(42) -> "42"    int("5") -> 5
+// String join:   "hello " + "world"
+// List length:   len(my_list)
+//
+// ============================================================
+//   EXAMPLE SCRIPT - move all units right each turn
+// ============================================================
 
-print("Welcome to using ahl-lang");
-for i in 0..10 {
-    print(i);
+fn on_turn() {
+    let units = get_units();
+    let count = len(units);
+
+    // Move every unit one tile to the right
+    for i in 0..count {
+        let unit = units[i]; 
+        move_unit(unit, "left ");
+    }
 }
-let input = "wow";
-print(input);
-
-fn cool_shit() {
-    print("akshjdajklshdajksldh");
-}
-
-coolshit();

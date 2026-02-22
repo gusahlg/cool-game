@@ -1,0 +1,67 @@
+// ahl_lang Feature List
+// 
+// Types
+// 
+// - int — 64-bit integer (42, -3)
+// - float — 64-bit float (3.14)
+// - string — double-quoted, with escape sequences \n \t \\ \" ("hello")
+// - bool — true / false
+// - nil — null value
+// - fn — first-class function values
+// - struct — user-defined struct types with named fields
+// - instance — runtime instances of structs
+// 
+// Variables
+// 
+// - let — declare and initialize a variable (let x = 5;)
+// - assignment — reassign an existing variable (x = 10;)
+// 
+// Operators
+// 
+// - arithmetic — +, -, *, /, % (int/float, + also concatenates strings)
+// - comparison — ==, !=, <, >, <=, >=
+// - logical — &&, ||, ! (short-circuit)
+// - unary negation — -expr
+// - truthiness — 0, 0.0, "", nil, false are falsy; everything else truthy
+// 
+// Control Flow
+// 
+// - if / else if / else — conditional branching (if cond { } else { })
+// - while — loop with condition (while cond { })
+// - for..in range — integer range loop (for i in 0..10 { })
+// - break — exit a loop early
+// - return — return a value from a function (only inside fn)
+// 
+// Functions
+// 
+// - fn definition — named functions with parameters (fn add(a, b) { return a + b; })
+// - function calls — add(1, 2)
+// - scoping — lexical scopes pushed/popped on block entry/exit
+// 
+// Structs & Methods
+// 
+// - struct definition — struct Point { x, y }
+// - positional construction — Point(1, 2) (args match field declaration order)
+// - field access — p.x
+// - field assignment — p.x = 10;
+// - impl blocks — impl Point { fn method(self) { ... } }
+// - method calls — p.method(args) (self passed by value)
+// - chaining — p.add(p2).to_string() works via postfix parsing
+// 
+// Built-in Functions
+// 
+// - print(args...) — variadic, prints space-separated values with newline
+// - len(s) — string length
+// - type(v) — returns type name as string (returns struct name for instances)
+// - str(v) — convert any value to string
+// - int(v) — convert to int (from float, string, bool)
+// - float(v) — convert to float (from int, string, bool)
+// 
+// Other
+// 
+// - line comments — // comment
+// - REPL mode — interactive prompt when run without arguments
+// - file mode — execute a .ahl file passed as CLI argument
+// - native function registration — host Rust code can register functions via AhlEngine::register_fn
+// 
+// 

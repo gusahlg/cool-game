@@ -17,6 +17,7 @@ pub enum UnitKind {
     Archer,
     Fighter,
     Catapult,
+    King,
 }   
 
 pub struct Unit {
@@ -29,18 +30,24 @@ pub struct Unit {
     pub kind: UnitKind,
 }
 impl Unit {
-    pub fn travel(&mut self, dir: Direction){
+    pub fn travel(&mut self, dir: Direction) {
         // Sorry for the disgusting freakish code
         match dir {
-            Direction::Up => { self.position[1] -= 1; },
+            Direction::Up => { self.position[1] = self.position[1].saturating_sub(1); },
             Direction::Down => { self.position[1] += 1; },
-            Direction::Left => { self.position[0] -= 1; },
+            Direction::Left => { self.position[0] = self.position[0].saturating_sub(1); },
             Direction::Right => { self.position[0] += 1; },
-            Direction::UpRight => { self.position[1] -= 1; self.position[0] += 1; },
-            Direction::UpLeft => { self.position[1] -= 1; self.position[0] -= 1; },
+            Direction::UpRight => { self.position[1] = self.position[1].saturating_sub(1); self.position[0] += 1; },
+            Direction::UpLeft => { self.position[1] = self.position[1].saturating_sub(1); self.position[0] = self.position[0].saturating_sub(1); },
             Direction::DownRight => { self.position[1] += 1; self.position[0] += 1; },
-            Direction::DownLeft => { self.position[1] += 1; self.position[0] -= 1; },
+            Direction::DownLeft => { self.position[1] += 1; self.position[0] = self.position[0].saturating_sub(1); },
         }
+    }
+    pub fn is_dead(&self) -> bool {
+        if self.hp == 0 {
+            return true;
+        }
+        else {return false;}
     }
     pub fn archer(pos: [u8; 2]) -> Self {
         Self { hp: 5,
@@ -64,6 +71,14 @@ impl Unit {
                dmg: 8,
                position: pos,
                kind: UnitKind::Catapult,
+        }
+    }
+    pub fn king(pos: [u8; 2]) -> Self {
+        Self { hp: 6,
+               max_hp: 6,
+               dmg: 8,
+               position: pos,
+               kind: UnitKind::King,
         }
     }
 }

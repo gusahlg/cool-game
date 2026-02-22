@@ -53,6 +53,7 @@ pub struct Units {
     pub fighter: Texture2D,
     pub archer: Texture2D,
     pub catapult: Texture2D,
+    pub king: Texture2D,
 }
 impl Units {
     pub async fn load() -> Self {
@@ -65,10 +66,14 @@ impl Units {
             let catapult = load_texture("assets/textures/units/catapult.png").await.expect("Failed to load player.png");
             catapult.set_filter(FilterMode::Nearest); 
 
+            let king = load_texture("assets/textures/units/king.png").await.expect("Failed to load king.png");
+            king.set_filter(FilterMode::Nearest); 
+
             Self {
                 fighter: fighter,
                 archer: archer,
                 catapult: catapult,
+                king: king,
             }
     }
 }

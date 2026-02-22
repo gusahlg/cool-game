@@ -94,6 +94,9 @@ impl Tile {
                 UnitKind::Catapult => {  
                     draw_texture(&assets.units.catapult, px, py, WHITE);
                 },
+                UnitKind::King => {
+                    draw_texture(&assets.units.king, px, py, WHITE);
+                }
             },
             None => {  }
         }
