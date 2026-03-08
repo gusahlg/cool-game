@@ -5,4 +5,4 @@ edition = "2024"
 
 [dependencies]
 macroquad = { version = "0.4", features = ["audio"] }
-ahl-lang = { path = "../ahl_lang" }
+ahl-lang = { path = "ahl_lang" }

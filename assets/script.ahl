@@ -124,16 +124,15 @@
 // List length:   len(my_list)
 //
 // ============================================================
-//   EXAMPLE SCRIPT - move all units right each turn
+//   EXAMPLE SCRIPT - move all units up each turn
 // ============================================================
 
 fn on_turn() {
     let units = get_units();
-    let count = len(units);
+    let count = unit_count();
 
     // Move every unit one tile to the right
-    for i in 0..count {
-        let unit = units[i]; 
-        move_unit(unit, "left ");
+    for i in 0..count { 
+        move_unit(i,  "up"); 
     }
-}
+ }
