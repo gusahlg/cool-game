@@ -1,4 +1,4 @@
-# A game I made for as a project in school
+# A game I made as a project in school
 
 THE IDEA:
 A strategy game about programming your units with an inbuilt scripting language with programmatic restrictions as resources.
